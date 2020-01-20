@@ -1,0 +1,45 @@
+<h1 id="chatmap-api">Chatmap API</h1>
+<h2 id="authentication">Authentication</h2>
+<p>Set header <code>Cookie</code> to <code>password=sadmcasldkfjsdclasdkcmascdmklasdm</code> for read access. For write access contact <code>HeNine</code>.</p>
+<p>HTTPS connection is required.</p>
+<h2 id="rest-api">REST API</h2>
+<h3 id="endpoint-apichatizen">Endpoint: <code>/api/chatizen</code></h3>
+<ul>
+<li>Method: <code>GET</code></li>
+<li>Access: read</li>
+<li>Return:
+<ul>
+<li>Status: 200</li>
+<li>Content type: application/json</li>
+</ul></li>
+</ul>
+<p>Returns all chatizens as a JSON list.</p>
+<h3 id="endpoint-apichatizenname">Endpoint: <code>/api/chatizen/&lt;name&gt;</code></h3>
+<ul>
+<li>Method: <code>GET</code></li>
+<li>Access: read</li>
+<li>Return:
+<ul>
+<li>Status: 200</li>
+<li>Content type: application/json</li>
+</ul></li>
+</ul>
+<p>Returns chatizen with name <code>&lt;name&gt;</code>. The name must match <code>^[a-z0-9]+$</code>.</p>
+<ul>
+<li>Method: <code>POST</code></li>
+<li>Access: write</li>
+<li>Return:
+<ul>
+<li>Status: 204</li>
+</ul></li>
+</ul>
+<p>Sets coordinates for chatizen with name <code>&lt;name&gt;</code>. Content of the message must be of the form <code>{&quot;lat&quot; : number, &quot;lon&quot; : number}</code>.</p>
+<ul>
+<li>Method: <code>DELETE</code></li>
+<li>Access: write</li>
+<li>Return:
+<ul>
+<li>Status: 204</li>
+</ul></li>
+</ul>
+<p>Delete chatizen with name <code>&lt;name&gt;</code>.</p>

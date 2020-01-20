@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DesertBus Community Chatmap</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0
+        }
+
+        #map {
+            height: 100%;
+            width: 100%;
+            position: absolute;;
+        }
+    </style>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<div id="map"></div>
+<script>
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 3,
+            center: {lat: 0, lng: 0}
+        });
+
+        function addPin(i, chatizen) {
+            new google.maps.Marker({
+                position: {lat: chatizen.lat, lng: chatizen.lon},
+                map: map,
+                label: chatizen.name[0],
+                title: chatizen.name
+            });
+        }
+
+        document.cookie = "password=sadmcasldkfjsdclasdkcmascdmklasdm";
+        $.getJSON(
+                "https://raptorpond.com:8088/api/chatizen",
+                function (data, status, xhr) {
+                    $.each(data, addPin);
+                }
+        );
+
+//        new google.maps.Marker({
+//            position: {lat: 0, lng: 0},
+//            map: map,
+//            title: "aaaaaaaaaaaa",
+//            label: "a"
+//        });
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQ5SLYXwpkW79L0ItO2lHpiBKwFBAIRs4&callback=initMap">
+</script>
+</body>
+</html>
